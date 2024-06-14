@@ -615,6 +615,8 @@ TEST_F(SplineInterpolationTest, quintic_spline_with_end_point_velocity_with_spee
   for (int i = 0; i < 100; i++)
   {
     readDataPackage(data_pkg);
+    // Keep connection alive
+    ASSERT_TRUE(g_ur_driver_->writeTrajectoryControlMessage(urcl::control::TrajectoryControlMessage::TRAJECTORY_NOOP));
   }
   ASSERT_TRUE(data_pkg->getData("target_qd", joint_velocities));
   for (unsigned int i = 0; i < 6; ++i)
