@@ -612,6 +612,10 @@ TEST_F(SplineInterpolationTest, quintic_spline_with_end_point_velocity_with_spee
 
   // Make sure the velocity is zero when the trajectory has finished
   readDataPackage(data_pkg);
+  for (int i = 0; i < 100; i++)
+  {
+    readDataPackage(data_pkg);
+  }
   ASSERT_TRUE(data_pkg->getData("target_qd", joint_velocities));
   for (unsigned int i = 0; i < 6; ++i)
   {
